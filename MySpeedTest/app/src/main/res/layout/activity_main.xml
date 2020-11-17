@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:gauge="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <include
+        android:id="@+id/download_details_include"
+        layout="@layout/upload_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"
+        gauge:layout_constraintEnd_toEndOf="parent"
+        gauge:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        layout="@layout/server_details"
+        android:id="@+id/server_details"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        gauge:layout_constraintBottom_toBottomOf="@+id/upload_details_include"
+        gauge:layout_constraintEnd_toStartOf="@id/download_details_include"
+        gauge:layout_constraintStart_toEndOf="@id/upload_details_include"
+        gauge:layout_constraintTop_toTopOf="@+id/upload_details_include" />
+
+    <include
+        android:id="@+id/upload_details_include"
+        layout="@layout/download_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        gauge:layout_constraintStart_toStartOf="parent"
+        gauge:layout_constraintTop_toTopOf="parent" />
+
+    <dlink.com.myspeedtest.gauge.GaugeView
+        android:id="@+id/gauge_view"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        gauge:divisions="8"
+        gauge:layout_constraintEnd_toEndOf="parent"
+        gauge:layout_constraintStart_toStartOf="parent"
+        gauge:layout_constraintTop_toBottomOf="@id/server_details"
+        android:layout_marginTop="30dp"
+        gauge:rangeValues="@array/speedTestRangeValues"
+        gauge:scaleEndValue="100"
+        gauge:textUnit="MBPS"
+        gauge:textUnitSize="0.06"
+        gauge:textValueSize="0.15" />
+
+    <Button
+        android:id="@+id/btnStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/light_blue"
+        android:text="START"
+        gauge:layout_constraintEnd_toEndOf="parent"
+        gauge:layout_constraintStart_toStartOf="parent"
+        gauge:layout_constraintTop_toBottomOf="@id/gauge_view" />
+</androidx.constraintlayout.widget.ConstraintLayout>
